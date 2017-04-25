@@ -1,3 +1,4 @@
+%define  __jar_repack 0
 %define  scala_version 2.11
 %define  kafka_version 0.10.2.0
 
@@ -37,3 +38,5 @@ install -m 644 %{kafka_filename}/libs/* $RPM_BUILD_ROOT/opt/kafka/libs
 %postun
 
 %files
+%defattr(-,root,root,-)
+/opt/kafka
