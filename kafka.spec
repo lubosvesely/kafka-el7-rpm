@@ -1,14 +1,13 @@
 %define  scala_version 2.11
-%define  kafka_version 0.10.2.0
 
 Name:    kafka
-Version: %{scala_version}-%{kafka_version}
+Version: 0.10.2.0
 Release: 1%{?dist}
 Summary: Apache Kafka - A distributed streaming platform
 
 License: Apache License Version 2.0
 URL:     https://kafka.apache.org/
-Source0: http://apache.cs.utah.edu/kafka/%{kafka_version}/%{name}_%{version}.tgz
+Source0: http://apache.cs.utah.edu/kafka/%{version}/%{name}_%{scala_version}-%{version}.tgz
 Source1: downstream.tar
 
 BuildArch: noarch
