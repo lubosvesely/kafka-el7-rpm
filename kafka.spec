@@ -21,7 +21,7 @@ rm -rf %{buildroot}
 %prep
 
 %build
-tar xvf %{SOURCE1}
+tar xvf %{SOURCE0}
 
 %install
 rm -rf $RPM_BUILD_ROOT
