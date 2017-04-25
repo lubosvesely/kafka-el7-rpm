@@ -30,9 +30,9 @@ rm -rf $RPM_BUILD_ROOT
 
 mkdir -p $RPM_BUILD_ROOT/opt/kafka/{libs,bin,config}
 
-install -m 755 %{kafka_filename}/bin/*.sh $RPM_BUILD_ROOT%/opt/kafka/bin
-install -m 644 %{kafka_filename}/config/* $RPM_BUILD_ROOT%/opt/kafka/config
-install -m 644 %{kafka_filename}/libs/* $RPM_BUILD_ROOT%/opt/kafka/libs
+install -m 755 %{kafka_filename}/bin/*.sh $RPM_BUILD_ROOT/opt/kafka/bin
+install -m 644 %{kafka_filename}/config/* $RPM_BUILD_ROOT/opt/kafka/config
+install -m 644 %{kafka_filename}/libs/* $RPM_BUILD_ROOT/opt/kafka/libs
 
 %postun
 
