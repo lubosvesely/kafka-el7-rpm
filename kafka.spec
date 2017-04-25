@@ -1,13 +1,16 @@
 %define  scala_version 2.11
+%define  kafka_version 0.10.2.0
 
 Name:    kafka
-Version: 0.10.2.0
+Version: %{kafka_version}
 Release: 1%{?dist}
 Summary: Apache Kafka - A distributed streaming platform
 
+%define  kafka_filename %{name}_%{scala_version}-%{version}
+
 License: Apache License Version 2.0
 URL:     https://kafka.apache.org/
-Source0: http://apache.cs.utah.edu/kafka/%{version}/%{name}_%{scala_version}-%{version}.tgz
+Source0: http://apache.cs.utah.edu/kafka/%{version}/%{kafka_filename}.tgz
 
 BuildArch: noarch
 
@@ -27,9 +30,9 @@ rm -rf $RPM_BUILD_ROOT
 
 mkdir -p $RPM_BUILD_ROOT/opt/kafka/{libs,bin,config}
 
-install -m 755 bin/*.sh $RPM_BUILD_ROOT%/opt/kafka/bin
-install -m 644 config/* $RPM_BUILD_ROOT%/opt/kafka/config
-install -m 644 libs/* $RPM_BUILD_ROOT%/opt/kafka/libs
+install -m 755 %{kafka_filename}/bin/*.sh $RPM_BUILD_ROOT%/opt/kafka/bin
+install -m 644 %{kafka_filename}/config/* $RPM_BUILD_ROOT%/opt/kafka/config
+install -m 644 %{kafka_filename}/libs/* $RPM_BUILD_ROOT%/opt/kafka/libs
 
 %postun
 

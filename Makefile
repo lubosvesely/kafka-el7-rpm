@@ -1,2 +1,2 @@
 tarball:
-	spectool -g kafka.spec
+	echo 'TODO: spectool -g kafka.spec'
