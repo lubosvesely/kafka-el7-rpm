@@ -33,6 +33,7 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT/opt/kafka/{bin,libs}
 install -d $RPM_BUILD_ROOT/etc/kafka
+install -d $RPM_BUILD_ROOT/%{_unitdir}
 install -d $RPM_BUILD_ROOT/etc/sysconfig/kafka
 
 install -m 755 %{kafka_filename}/bin/*.sh $RPM_BUILD_ROOT/opt/kafka/bin
