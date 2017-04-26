@@ -17,6 +17,7 @@ Source2: kafka.logrotate
 Source3: kafka.sysconfig
 
 BuildArch: noarch
+Requires(post): systemd
 
 %description
 Kafka is used for building real-time data pipelines and streaming apps. It is horizontally scalable, fault-tolerant, wicked fast, and runs in production in thousands of companies.
@@ -39,9 +40,9 @@ install -m 755 %{kafka_filename}/bin/*.sh $RPM_BUILD_ROOT/opt/kafka/bin
 install -m 644 %{kafka_filename}/libs/* $RPM_BUILD_ROOT/opt/kafka/libs
 install -m 644 %{kafka_filename}/config/server.properties $RPM_BUILD_ROOT/etc/kafka
 install -m 644 %{kafka_filename}/config/log4j.properties $RPM_BUILD_ROOT/etc/kafka
-install -m 755 %{S:1} $RPM_BUILD_ROOT%{_unitdir}/
-install -m 644 %{S:2} $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d/kafka
-install -m 644 %{S:3} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/kafka
+install -m 755 %{S:1} $RPM_BUILD_ROOT/%{_unitdir}/
+install -m 644 %{S:2} $RPM_BUILD_ROOT/%{_sysconfdir}/logrotate.d/kafka
+install -m 644 %{S:3} $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/kafka
 
 %files
 %defattr(-,root,root,-)
