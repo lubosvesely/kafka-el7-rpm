@@ -12,6 +12,9 @@ Summary: Apache Kafka - A distributed streaming platform
 License: Apache License Version 2.0
 URL:     https://kafka.apache.org/
 Source0: http://apache.cs.utah.edu/kafka/%{version}/%{kafka_filename}.tgz
+Source1: kafka.service
+Source2: kafka.logrotate
+Source3: kafka.sysconfig
 
 BuildArch: noarch
 
@@ -29,14 +32,21 @@ tar xvf %{SOURCE0}
 %install
 rm -rf $RPM_BUILD_ROOT
 
-mkdir -p $RPM_BUILD_ROOT/opt/kafka/{libs,bin,config}
+mkdir -p $RPM_BUILD_ROOT/opt/kafka/{bin,libs}
+mkdir -p $RPM_BUILD_ROOT/etc/kafka
 
 install -m 755 %{kafka_filename}/bin/*.sh $RPM_BUILD_ROOT/opt/kafka/bin
-install -m 644 %{kafka_filename}/config/* $RPM_BUILD_ROOT/opt/kafka/config
 install -m 644 %{kafka_filename}/libs/* $RPM_BUILD_ROOT/opt/kafka/libs
-
-%postun
+install -m 644 %{kafka_filename}/config/server.properties $RPM_BUILD_ROOT/etc/kafka
+install -m 644 %{kafka_filename}/config/log4j.properties $RPM_BUILD_ROOT/etc/kafka
+install -m 755 %{S:1} $RPM_BUILD_ROOT%{_unitdir}/
+install -m 644 %{S:2} $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d/kafka
+install -m 644 %{S:3} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/kafka
 
 %files
 %defattr(-,root,root,-)
 /opt/kafka
+/etc/kafka
+%{_unitdir}/kafka.service
+%{_sysconfdir}/logrotate.d/kafka
+%{_sysconfdir}/sysconfig/kafka
