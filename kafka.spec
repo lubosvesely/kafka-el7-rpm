@@ -15,7 +15,7 @@ Source0: http://apache.cs.utah.edu/kafka/%{version}/%{kafka_filename}.tgz
 Source1: kafka.service
 Source2: kafka.sysconfig
 
-Requires(post): systemd
+BuildRequires: systemd
 
 %description
 Kafka is used for building real-time data pipelines and streaming apps. It is horizontally scalable, fault-tolerant, wicked fast, and runs in production in thousands of companies.
