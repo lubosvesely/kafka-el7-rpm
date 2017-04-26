@@ -13,8 +13,7 @@ License: Apache License Version 2.0
 URL:     https://kafka.apache.org/
 Source0: http://apache.cs.utah.edu/kafka/%{version}/%{kafka_filename}.tgz
 Source1: kafka.service
-Source2: kafka.logrotate
-Source3: kafka.sysconfig
+Source2: kafka.sysconfig
 
 Requires(post): systemd
 
@@ -40,7 +39,7 @@ install -m 644 %{kafka_filename}/libs/* $RPM_BUILD_ROOT/opt/kafka/libs
 install -m 644 %{kafka_filename}/config/server.properties $RPM_BUILD_ROOT/etc/kafka
 install -m 644 %{kafka_filename}/config/log4j.properties $RPM_BUILD_ROOT/etc/kafka
 # install -m 755 %{S:1} $RPM_BUILD_ROOT/%{_unitdir}/
-install -m 644 %{S:3} $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/kafka
+install -m 644 %{S:2} $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/kafka
 
 %files
 %defattr(-,root,root,-)
