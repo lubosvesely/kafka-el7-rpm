@@ -39,12 +39,12 @@ install -m 755 %{kafka_filename}/bin/*.sh $RPM_BUILD_ROOT/opt/kafka/bin
 install -m 644 %{kafka_filename}/libs/* $RPM_BUILD_ROOT/opt/kafka/libs
 install -m 644 %{kafka_filename}/config/server.properties $RPM_BUILD_ROOT/etc/kafka
 install -m 644 %{kafka_filename}/config/log4j.properties $RPM_BUILD_ROOT/etc/kafka
-# install -m 755 %{S:1} $RPM_BUILD_ROOT/%{_unitdir}/
+install -m 755 %{S:1} $RPM_BUILD_ROOT/%{_unitdir}/
 install -m 644 %{S:2} $RPM_BUILD_ROOT/%{_sysconfdir}/sysconfig/kafka
 
 %files
 %defattr(-,root,root,-)
 /opt/kafka
 /etc/kafka
-# %{_unitdir}/kafka.service
+%{_unitdir}/kafka.service
 %{_sysconfdir}/sysconfig/kafka
