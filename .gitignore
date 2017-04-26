@@ -1,6 +1,0 @@
-/KEYS
-/kafka_*.asc
-/x86_64/
-/*.jar
-!kafka-graphite*.jar
-/RPMS
