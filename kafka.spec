@@ -31,8 +31,9 @@ tar xvf %{SOURCE0}
 %install
 rm -rf $RPM_BUILD_ROOT
 
-mkdir -p $RPM_BUILD_ROOT/opt/kafka/{bin,libs}
-mkdir -p $RPM_BUILD_ROOT/etc/kafka
+install -d $RPM_BUILD_ROOT/opt/kafka/{bin,libs}
+install -d $RPM_BUILD_ROOT/etc/kafka
+install -d $RPM_BUILD_ROOT/etc/sysconfig/kafka
 
 install -m 755 %{kafka_filename}/bin/*.sh $RPM_BUILD_ROOT/opt/kafka/bin
 install -m 644 %{kafka_filename}/libs/* $RPM_BUILD_ROOT/opt/kafka/libs
